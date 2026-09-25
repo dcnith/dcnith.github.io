@@ -105,6 +105,21 @@ body {
   color: #fff;
   border-bottom-color: var(--gold);
 }
+.theme-toggle {
+  margin-left: auto;
+  background: none;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 5px 12px;
+  white-space: nowrap;
+  align-self: center;
+  transition: border-color 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
 
 /* ── PAGES ── */
 .page { display: none; padding: 32px 0 60px; max-width: 720px; margin: 0 auto; }
@@ -460,7 +475,7 @@ li { margin-bottom: 5px; }
 
 <!-- NAV -->
 <nav class="site-nav">
-  <div class="nav-inner">
+  <div class="nav-inner" style="width:100%;display:flex;align-items:center;">
     <button class="nav-btn active" onclick="showPage('about',this)">About</button>
     <button class="nav-btn" onclick="showPage('publications',this)">Publications</button>
     <button class="nav-btn" onclick="showPage('certifications',this)">Certifications</button>
@@ -468,6 +483,7 @@ li { margin-bottom: 5px; }
     <button class="nav-btn" onclick="showPage('projects',this)">Projects</button>
     <button class="nav-btn" onclick="showPage('hobbies',this)">Hobbies</button>
     <button class="nav-btn" onclick="showPage('contact',this)">Contact</button>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">🌙 Dark</button>
   </div>
 </nav>
 
@@ -957,6 +973,37 @@ function showPage(id, btn) {
   btn.classList.add('active');
   window.scrollTo(0, 0);
 }
+
+// Theme toggle
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  var root = document.documentElement;
+
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    btn.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+    try { localStorage.setItem('dc-theme', theme); } catch(e) {}
+  }
+
+  function toggleTheme() {
+    var current = root.getAttribute('data-theme') || 'light';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  }
+  window.toggleTheme = toggleTheme;
+
+  // On load: check saved preference, else follow system
+  try {
+    var saved = localStorage.getItem('dc-theme');
+    if (saved) {
+      applyTheme(saved);
+    } else {
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+  } catch(e) {
+    applyTheme('light');
+  }
+})();
 </script>
 
 </body>
