@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deepak Choudhary — Data Scientist & Policy Researcher</title>
+  <meta name="description" content="Research Scientist at IIT Bombay IEOR. 12+ years experience in data science, ML, IoT analytics, and development policy research. 16 publications including RSER (IF 16.8), World Development (IF 6.7).">
+  <meta name="author" content="Deepak Choudhary">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+:root {
+  --navy: #1a2744;
+  --accent: #3d5a99;
+  --gold: #c9a84c;
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --border: #e2e0db;
+  --text: #2d3142;
+  --text-muted: #6b7080;
+  --tag-bg: #eef1f8;
+  --tag-text: #3d5a99;
+  --badge-bg: #fdf6e3;
+  --badge-text: #8a6820;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy: #c5d0e8;
+    --accent: #7a9fd4;
+    --gold: #d4a84c;
+    --bg: #141820;
+    --surface: #1e2433;
+    --border: #2e3650;
+    --text: #dde3f0;
+    --text-muted: #8a93b0;
+    --tag-bg: #1e2a44;
+    --tag-text: #7a9fd4;
+    --badge-bg: #2a2310;
+    --badge-text: #d4a84c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --navy: #c5d0e8;
+  --accent: #7a9fd4;
+  --gold: #d4a84c;
+  --bg: #141820;
+  --surface: #1e2433;
+  --border: #2e3650;
+  --text: #dde3f0;
+  --text-muted: #8a93b0;
+  --tag-bg: #1e2a44;
+  --tag-text: #7a9fd4;
+  --badge-bg: #2a2310;
+  --badge-text: #d4a84c;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 0 16px;
+  padding-block: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* ── NAV ── */
+.site-nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 100;
+  background: var(--navy);
+  margin: 0 -16px;
+  padding: 0 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.site-nav::-webkit-scrollbar { display: none; }
+.nav-inner {
+  display: flex;
+  gap: 0;
+  min-width: max-content;
+}
+.nav-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.65);
+  background: none;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  padding: 14px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav-btn:hover { color: rgba(255,255,255,0.9); }
+.nav-btn.active {
+  color: #fff;
+  border-bottom-color: var(--gold);
+}
+
+/* ── PAGES ── */
+.page { display: none; padding: 32px 0 60px; max-width: 720px; margin: 0 auto; }
+.page.active { display: block; }
+
+/* ── HERO (About) ── */
+.hero-block {
+  border-left: 3px solid var(--gold);
+  padding-left: 18px;
+  margin-bottom: 28px;
+}
+.hero-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(26px, 5vw, 36px);
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 4px;
+  text-wrap: balance;
+}
+.hero-role {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 6px;
+}
+.hero-inst {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 28px;
+}
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--tag-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  text-decoration: none;
+}
+.social-pill:hover { background: var(--accent); color: #fff; }
+
+/* ── METRICS ── */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+@media (min-width: 480px) {
+  .metrics-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.metric-tile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 12px;
+  text-align: center;
+}
+.metric-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.metric-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+
+/* ── SECTION HEADINGS ── */
+.sec-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 36px 0 10px;
+}
+h2.sec {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+h3.sub {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 20px 0 6px;
+}
+
+/* ── BODY TEXT ── */
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 20px; }
+li { margin-bottom: 5px; }
+
+/* ── TRACK CARDS (About dual-track) ── */
+.track-grid {
+  display: grid;
+  gap: 14px;
+  margin: 18px 0;
+}
+@media (min-width: 540px) {
+  .track-grid { grid-template-columns: 1fr 1fr; }
+}
+.track-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+.track-card-head {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.track-card p { font-size: 13.5px; color: var(--text-muted); margin: 0; }
+
+/* ── HIGHLIGHT CARDS ── */
+.highlight-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+.highlight-card-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.highlight-card p { font-size: 13.5px; color: var(--text-muted); margin: 0 0 6px; }
+.cite {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* ── AI SECTION ── */
+.ai-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  align-items: flex-start;
+}
+.ai-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+.ai-item strong { color: var(--navy); }
+
+/* ── PUBLICATIONS ── */
+.pub-section-head {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  margin: 28px 0 14px;
+}
+.pub-item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.pub-item:last-child { border-bottom: none; }
+.pub-authors { font-size: 13px; color: var(--text-muted); margin-bottom: 3px; }
+.pub-title { font-weight: 600; font-size: 14px; color: var(--navy); margin-bottom: 3px; }
+.pub-meta { font-size: 12.5px; color: var(--text-muted); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.if-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-weight: 500;
+}
+.pub-link { font-size: 12px; color: var(--accent); text-decoration: none; word-break: break-all; }
+.pub-link:hover { text-decoration: underline; }
+.in-progress-badge {
+  font-size: 10.5px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+/* ── CERT ITEMS ── */
+.cert-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cert-item:last-child { border-bottom: none; }
+.cert-icon { font-size: 16px; flex-shrink: 0; width: 24px; text-align: center; }
+.cert-text { font-size: 13.5px; flex: 1; }
+.cert-text strong { color: var(--navy); display: block; margin-bottom: 1px; }
+.cert-text span { color: var(--text-muted); font-size: 12.5px; }
+
+/* ── SKILLS ── */
+.skills-grid {
+  display: grid;
+  gap: 20px;
+  margin: 14px 0;
+}
+@media (min-width: 520px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
+.skills-col-head {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.tag-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-size: 12px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+/* ── PROJECTS ── */
+.proj-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+.proj-title { font-weight: 700; font-size: 15px; color: var(--navy); margin-bottom: 4px; }
+.proj-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; font-style: italic; }
+.proj-card p { font-size: 13.5px; margin: 0 0 8px; }
+
+/* ── EDU ── */
+.edu-block {
+  border-left: 2px solid var(--border);
+  padding-left: 16px;
+  margin-bottom: 20px;
+}
+.edu-block:hover { border-left-color: var(--accent); }
+.edu-degree { font-weight: 600; font-size: 15px; color: var(--navy); }
+.edu-inst { font-size: 13.5px; color: var(--text-muted); margin: 2px 0; }
+.edu-meta { font-size: 12.5px; color: var(--text-muted); }
+
+/* ── CONTACT ── */
+.contact-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.contact-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  min-width: 80px;
+  padding-top: 2px;
+  letter-spacing: 0.05em;
+}
+.contact-val { color: var(--text); flex: 1; word-break: break-all; }
+
+/* ── COPY HELPER ── */
+.copy-box {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin: 6px 0 14px;
+  word-break: break-all;
+  user-select: all;
+}
+
+.divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+.page-note {
+  background: var(--badge-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--badge-text);
+  margin-bottom: 24px;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showPage('about',this)">About</button>
+    <button class="nav-btn" onclick="showPage('publications',this)">Publications</button>
+    <button class="nav-btn" onclick="showPage('certifications',this)">Certifications</button>
+    <button class="nav-btn" onclick="showPage('academic',this)">Academic</button>
+    <button class="nav-btn" onclick="showPage('projects',this)">Projects</button>
+    <button class="nav-btn" onclick="showPage('hobbies',this)">Hobbies</button>
+    <button class="nav-btn" onclick="showPage('contact',this)">Contact</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+<section class="page active" id="page-about">
+
+  <div class="hero-block">
+    <p class="hero-role">Data Scientist &amp; Policy Researcher</p>
+    <h1 class="hero-name">Deepak Choudhary</h1>
+    <p class="hero-inst">Department of Industrial Engineering &amp; Operations Research · IIT Bombay · Mumbai, India</p>
+  </div>
+
+  <div class="social-row">
+    <a class="social-pill" href="https://www.linkedin.com/in/deepak-choudhary-33455417/" target="_blank">↗ LinkedIn</a>
+    <a class="social-pill" href="https://scholar.google.com/citations?user=ZzQA3dgAAAAJ&hl=en" target="_blank">↗ Google Scholar</a>
+    <a class="social-pill" href="https://www.researchgate.net/profile/Deepak-Choudhary-13" target="_blank">↗ ResearchGate</a>
+    <a class="social-pill" href="https://github.com/dcnith" target="_blank">↗ GitHub</a>
+    <a class="social-pill" href="https://www.kaggle.com/deepakchoudhary" target="_blank">↗ Kaggle</a>
+    <a class="social-pill" href="https://orcid.org/0000-0001-6848-6850" target="_blank">↗ ORCID</a>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-tile">
+      <div class="metric-num">12+</div>
+      <div class="metric-label">Years Experience</div>
+    </div>
+    <div class="metric-tile">
+      <div class="metric-num">16</div>
+      <div class="metric-label">Research Outputs</div>
+    </div>
+    <div class="metric-tile">
+      <div class="metric-num">10M+</div>
+      <div class="metric-label">IoT Records Processed</div>
+    </div>
+    <div class="metric-tile">
+      <div class="metric-num">12K+</div>
+      <div class="metric-label">Households Reached</div>
+    </div>
+  </div>
+
+  <p>I work at the intersection of <strong>data science and development policy</strong> — building ML systems and conducting field research that shapes real-world programmes and evidence-based policy. Over 12+ years at IIT Bombay's IEOR department, I have built 10M+ record IoT data pipelines, fine-tuned LLMs (91% benchmark accuracy), designed randomised field experiments, and co-authored 16 research outputs — including publications in <em>World Development</em> (IF 6.7), <em>Renewable &amp; Sustainable Energy Reviews</em> (IF 16.8), <em>Energy Research &amp; Social Science</em> (IF 6.7), and a UKAid/MECS programme report on electric cooking in rural India.</p>
+
+  <div class="track-grid">
+    <div class="track-card">
+      <div class="track-card-head">🔬 Data Science &amp; AI</div>
+      <p>End-to-end ML pipelines · IoT sensor analytics · LLM fine-tuning (PEFT/LoRA) · RAG systems · Agentic workflows · Ensemble modeling (LightGBM, XGBoost, CatBoost) · Python · PyTorch · Hugging Face · LangGraph · Azure AI · SQL · Power BI</p>
+    </div>
+    <div class="track-card">
+      <div class="track-card-head">📊 Policy Research</div>
+      <p>Randomised field experiments · Longitudinal household surveys · Nudging studies · Programme evaluation · Energy access · Clean cooking · Gender &amp; development · Bihar, Jharkhand, Assam, Uttar Pradesh</p>
+    </div>
+  </div>
+
+  <p>🏆 Best Poster Award, IEEE WCPEC-7, Hawaii &nbsp;|&nbsp; GATE qualified: EC (2010, 2017), CS (2020) &nbsp;|&nbsp; MHRD Scholar, NIT Hamirpur</p>
+
+  <hr class="divider">
+
+  <div class="sec-label">Research Highlights</div>
+  <h2 class="sec">Selected Impact</h2>
+
+  <div class="highlight-card">
+    <div class="highlight-card-title">Electric Cooking Programme — UKAid/MECS, Bihar</div>
+    <p>Led supply-chain activation across 10 blocks. 12,000+ households reached; 1,505 paying customers converted to electric cooking. Co-authored the MECS Phase II public report shaping national scale-up recommendations.</p>
+  </div>
+  <div class="highlight-card">
+    <div class="highlight-card-title">Cooking Behaviour Change — Nudging Experiment</div>
+    <p>Designed a 3-round nudging experiment (n = 194 households). Found 26 min/day reduction in biomass use and 31 min/day in LPG use. Showed in-person facilitation significantly outperforms SMS nudges.</p>
+  </div>
+  <div class="highlight-card">
+    <div class="highlight-card-title">Willingness-to-Pay for Solar Lamps</div>
+    <p>Panel data from 1,159 rural households across 4 waves; logistic regression with village fixed/random effects identifying WTP determinants.</p>
+    <div class="cite">Published in Renewable &amp; Sustainable Energy Reviews · IF 16.8</div>
+  </div>
+  <div class="highlight-card">
+    <div class="highlight-card-title">Solar Energy &amp; Women's Empowerment</div>
+    <p>4-round longitudinal study (n = 313, 4 states) quantifying pathways from solar access to skills, occupation, and women's agency.</p>
+    <div class="cite">Published in Energy Research &amp; Social Science · IF 6.7</div>
+  </div>
+  <div class="highlight-card">
+    <div class="highlight-card-title">Education Outcomes — Solar Study Lamps</div>
+    <p>873-household study finding ~30 min/day improvement in children's study time from solar lamp access.</p>
+    <div class="cite">Published in Energy for Sustainable Development · IF 5.7</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="sec-label">Current AI Work</div>
+  <h2 class="sec">AI &amp; GenAI Projects</h2>
+
+  <div class="ai-item"><div class="ai-dot"></div><div><strong>LLM Fine-Tuning</strong> — Fine-tuned DeBERTa-v3 Large/Base using SFT + PEFT/LoRA with pseudo-labelling, stratified K-fold validation, probability calibration, and weighted ensembling; achieved <strong>91% accuracy</strong> on harmful content classification benchmark.</div></div>
+  <div class="ai-item"><div class="ai-dot"></div><div><strong>Hybrid Log Classification Pipeline</strong> — Multi-tier system (Regex → Sentence Transformers + LR → LLM fallback) that improved accuracy by <strong>40%</strong> and cut operational costs by <strong>30%</strong> over rule-based baselines.</div></div>
+  <div class="ai-item"><div class="ai-dot"></div><div><strong>Retrieval-Augmented Generation (RAG)</strong> — Designing knowledge retrieval pipelines for structured and unstructured document corpora.</div></div>
+  <div class="ai-item"><div class="ai-dot"></div><div><strong>Agentic AI Workflows</strong> — Multi-step reasoning systems using LangGraph orchestration and tool-use frameworks.</div></div>
+  <div class="ai-item"><div class="ai-dot"></div><div><strong>Medical Imaging (Deep Learning)</strong> — CT scan abdominal trauma detection and skin lesion classification (SIIM-ISIC) via ResNet50 transfer learning on Kaggle datasets.</div></div>
+
+</section>
+
+<!-- ═══════════════════════ PUBLICATIONS ═══════════════════════ -->
+<section class="page" id="page-publications">
+
+  <div class="sec-label">Research Output</div>
+  <h2 class="sec">Publications &amp; Reports</h2>
+
+  <div class="pub-section-head">Journals — In Progress</div>
+
+  <div class="pub-item">
+    <div class="pub-authors"><strong>Deepak Choudhary</strong>, Sayli Shiradkar, Rohit Sharma, Praveen Kumar, Jayendran Venkateswaran, Chetan Singh Solanki</div>
+    <div class="pub-title">A machine learning approach to assist rural entrepreneurship</div>
+    <div class="pub-meta"><span class="in-progress-badge">In Progress</span></div>
+  </div>
+  <div class="pub-item">
+    <div class="pub-authors">Rohit Sharma, <strong>Deepak Choudhary</strong>, Praveen Kumar, Jayendran Venkateswaran, Chetan Singh Solanki</div>
+    <div class="pub-title">To examine the impact of Solar Study Lamps on the educational outcomes of the children in rural India</div>
+    <div class="pub-meta"><span class="in-progress-badge">In Progress</span></div>
+  </div>
+
+  <div class="pub-section-head">Programme Reports</div>
+
+  <div class="pub-item">
+    <div class="pub-authors">Jayendran Venkateswaran, Purva Jamsandekar, <strong>Deepak Choudhary</strong> (2025)</div>
+    <div class="pub-title">Enabling Electric Cooking Ecosystem in Rural India</div>
+    <div class="pub-meta">MECS Phase II Report · UKAid/MECS <span class="if-badge">Policy Report</span></div>
+    <a class="pub-link" href="https://mecs.org.uk/wp-content/uploads/2025/08/Enabling-Electric-Cooking-Ecosystem-in-Rural-India-IIT.pdf" target="_blank">mecs.org.uk ↗</a>
+  </div>
+
+  <div class="pub-section-head">Journals</div>
+
+  <div class="pub-item">
+    <div class="pub-authors">Sayli Shiradkar, Rohit Sharma, <strong>Deepak Choudhary</strong>, Praveen Kumar, Jayendran Venkateswaran, Chetan Singh Solanki (2023)</div>
+    <div class="pub-title">Can community based solar energy initiatives deliver on women's empowerment in India? Evidence from a longitudinal study</div>
+    <div class="pub-meta"><em>Energy Research &amp; Social Science</em> <span class="if-badge">IF 6.7 · SCI</span></div>
+    <a class="pub-link" href="https://doi.org/10.1016/j.erss.2023.103225" target="_blank">doi.org/10.1016/j.erss.2023.103225 ↗</a>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors">Rohit Sharma, <strong>Deepak Choudhary</strong>, Sayli Shiradkar, Praveen Kumar, Jayendran Venkateswaran, Chetan Singh Solanki, Gautam Yadama (2021)</div>
+    <div class="pub-title">Who is willing to pay for solar lamps in rural India? A Longitudinal Study</div>
+    <div class="pub-meta"><em>Renewable &amp; Sustainable Energy Reviews</em> <span class="if-badge">IF 16.8 · SCI</span></div>
+    <a class="pub-link" href="https://doi.org/10.1016/j.rser.2021.110734" target="_blank">doi.org/10.1016/j.rser.2021.110734 ↗</a>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors">Lalita Joshi, <strong>Deepak Choudhary</strong>, Praveen Kumar, Jayendran Venkateswaran, Chetan Singh Solanki (2019)</div>
+    <div class="pub-title">Does involvement of local community ensure sustained energy access? A critical review of a solar PV based intervention</div>
+    <div class="pub-meta"><em>World Development</em> <span class="if-badge">IF 6.7 · SCI</span></div>
+    <a class="pub-link" href="https://doi.org/10.1016/j.worlddev.2019.05.028" target="_blank">doi.org/10.1016/j.worlddev.2019.05.028 ↗</a>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors">Rohit Sharma, <strong>Deepak Choudhary</strong>, Praveen Kumar, Jayendran Venkateswaran, Chetan Singh Solanki (2019)</div>
+    <div class="pub-title">Do solar study lamps help children study at night? Evidence from rural India</div>
+    <div class="pub-meta"><em>Energy for Sustainable Development</em> <span class="if-badge">IF 5.7 · SCI</span></div>
+    <a class="pub-link" href="https://doi.org/10.1016/j.esd.2019.03.005" target="_blank">doi.org/10.1016/j.esd.2019.03.005 ↗</a>
+  </div>
+
+  <div class="pub-section-head">Conferences</div>
+
+  <div class="pub-item">
+    <div class="pub-authors">Sayli Bhide, <strong>Deepak Choudhary</strong>, Praveen Kumar, Jayendran Venkateswaran (2023)</div>
+    <div class="pub-title">A Machine Learning Approach to Assist Rural Entrepreneurship</div>
+    <div class="pub-meta">56th Annual Convention ORSI &amp; 10th International Conference on Business Analytics &amp; Intelligence (ICBAI), IISc Bangalore · Dec 18–20, 2023</div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors">Jayendran Venkateswaran, Sayli Shiradkar, <strong>Deepak Choudhary</strong> (2022)</div>
+    <div class="pub-title">Agent-based learning environment for survey research</div>
+    <div class="pub-meta">2022 Winter Simulation Conference (WSC) · Singapore · Dec 10–14, 2022</div>
+    <a class="pub-link" href="https://doi.org/10.1109/WSC57314.2022.10015271" target="_blank">doi.org/10.1109/WSC57314.2022.10015271 ↗</a>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors">Tresa Maria, <strong>Deepak Choudhary</strong>, Sayli Shiradkar, Jayendran Venkateswaran, Praveen Kumar (2022)</div>
+    <div class="pub-title">A CBSD study to understand stacking of solar induction and LPG cookstoves along with traditional biomass cookstoves</div>
+    <div class="pub-meta">International System Dynamics Conference (ISDC 2022) · Frankfurt · July 2022</div>
+    <a class="pub-link" href="https://proceedings.systemdynamics.org/2022/papers/P1268.pdf" target="_blank">proceedings.systemdynamics.org ↗</a>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors">Rohit Sharma, <strong>Deepak Choudhary</strong>, Sayli Shiradkar, Praveen Kumar, Jayendran Venkateswaran, Chetan Singh Solanki (2020)</div>
+    <div class="pub-title">Solar lamps for rural India: Longitudinal study on awareness, motivation and willingness to pay</div>
+    <div class="pub-meta">2nd International Conference on Rural Technology Development and Delivery (RTDD 2020) · IIT Madras</div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors">Rohit Sharma, <strong>Deepak Choudhary</strong>, Nikita Arora, Jayendran Venkateswaran, Chetan Singh Solanki (2018)</div>
+    <div class="pub-title">Solar Study Lamps target to brighten 1 Million Lives: Experimental evidence from Pilot project in India</div>
+    <div class="pub-meta">IEEE WCPEC-7 · Waikola, Hawaii · 2018 &nbsp;<span class="if-badge">🏆 Best Poster Award</span></div>
+    <a class="pub-link" href="https://doi.org/10.1109/PVSC.2018.8547474" target="_blank">doi.org/10.1109/PVSC.2018.8547474 ↗</a>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors">Rohit Sharma, <strong>Deepak Choudhary</strong>, Amruta Joshi, Jayendran Venkateswaran, Chetan Singh Solanki (2018)</div>
+    <div class="pub-title">Bringing Solar PV Technologies for Reliable Off-grid Power in Rural India</div>
+    <div class="pub-meta">IEEE WCPEC-7 · Waikola, Hawaii · 2018</div>
+    <a class="pub-link" href="https://doi.org/10.1109/PVSC.2018.8547648" target="_blank">doi.org/10.1109/PVSC.2018.8547648 ↗</a>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors">J. Panot, <strong>Deepak Choudhary</strong>, Sayli Bhide, J. Venkateswaran, C.S. Solanki</div>
+    <div class="pub-title">Operationalizing Localization: A Case study of solar PV based technology Intervention in Rural India</div>
+    <div class="pub-meta">51st Annual Convention ORSI · IIT Bombay · December 2018</div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors">L. Joshi, <strong>Deepak Choudhary</strong>, P. Kumar, J. Venkateswaran, C.S. Solanki (2018)</div>
+    <div class="pub-title">Does involvement of local community ensure sustained energy access? A critical review…</div>
+    <div class="pub-meta">Sustainable Development Conference · University of Michigan · November 2018</div>
+    <a class="pub-link" href="https://umsustdev.org/wp-content/uploads/2018/11/SDCSubmission233.pdf" target="_blank">umsustdev.org ↗</a>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors">C.S. Solanki, R. Sharma, <strong>Deepak Choudhary</strong>, J. Venkateswaran (2018)</div>
+    <div class="pub-title">Solar entrepreneurial ecosystem by locals for locals</div>
+    <div class="pub-meta">3rd RESRB Conference Proceedings · 2018</div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors"><strong>Deepak Choudhary</strong>, A. Kaul, R.N. Sharma (2012)</div>
+    <div class="pub-title">Hiding Image and Speech data using Repeated Unitary Similarity Transformation</div>
+    <div class="pub-meta">2nd International Conference on Biomedical Engineering &amp; Assistive Technologies (BEATs 2012) · NIT Hamirpur</div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-authors">A. Kaul, N. Gautam, R. Jain, <strong>Deepak Choudhary</strong>, R.N. Sharma (2012)</div>
+    <div class="pub-title">NITH_MBD — Multimodal Biometric Database</div>
+    <div class="pub-meta">2nd International Conference on Biomedical Engineering &amp; Assistive Technologies (BEATs 2012) · NIT Hamirpur</div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════ CERTIFICATIONS ═══════════════════════ -->
+<section class="page" id="page-certifications">
+
+  <div class="sec-label">Credentials &amp; Recognition</div>
+  <h2 class="sec">Certifications &amp; Achievements</h2>
+
+  <h3 class="sub">🤖 AI &amp; Machine Learning</h3>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>Winter School on Deep Learning (WSDL 2025)</strong><span>Indian Statistical Institute (ISI), Kolkata · 2025</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>Generative AI — Principles and Applications</strong><span>Semester-long certificate course · CCE, IISc Bangalore · A Grade</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>Fine-Tuning LLMs with Hugging Face Transformers for NLP</strong><span>Udemy · 2025</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>Open Source Models with Hugging Face</strong><span>DeepLearning.AI</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>ChatGPT Prompt Engineering for Developers</strong><span>DeepLearning.AI</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>Building Systems with the ChatGPT API</strong><span>DeepLearning.AI</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>Advanced Topics on Deep Learning</strong><span>Semester-long certificate · CCE, IISc Bangalore · A Grade (Jan–May 2022)</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>Deep Reinforcement Learning Workshop</strong><span>CSA, IISc Bangalore · Oct 21–23, 2021</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>Deep Learning</strong><span>One Forth Labs (IIT Madras startup) · <a class="pub-link" href="https://www.credential.net/822dd4a4-d0f3-427e-8acf-3f5bcfa75cbf" target="_blank">Certificate ↗</a></span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>Deep Learning Certificate Course</strong><span>CCE, IISc Bangalore · A Grade (Jan–May 2018)</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>Data Mining Certificate Course</strong><span>CCE, IISc Bangalore · A Grade (Aug–Dec 2017)</span></div></div>
+
+  <h3 class="sub">📊 Other Technical</h3>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>R Programming</strong><span>Coursera · 2015</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>Python and Django Workshop</strong><span>FOSSEE, IIT Bombay · Apr 8–9, 2022</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🏆</div><div class="cert-text"><strong>GATE Qualified</strong><span>Electronics &amp; Communication: 2010 (Score 458), 2017 (Score 371) &nbsp;|&nbsp; Computer Science: 2020 (Score 367)</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>MHRD Scholarship</strong><span>Ministry of Human Resource Development, Govt. of India · for M.Tech at NIT Hamirpur</span></div></div>
+
+  <h3 class="sub">🏆 Awards &amp; Recognitions</h3>
+  <div class="cert-item"><div class="cert-icon">🥇</div><div class="cert-text"><strong>Best Poster Award</strong><span>IEEE World Conference on Photovoltaic Energy Conversion (WCPEC-7) · Waikola, Hawaii · June 13, 2018 · <a class="pub-link" href="http://ieee-pvsc.org/WCPEC-7/awards-best-poster.php" target="_blank">Link ↗</a></span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎤</div><div class="cert-text"><strong>Invited Talk</strong><span>"Impact analysis of decentralized solar systems on community" · IIT Bombay · April 2021 · <a class="pub-link" href="https://www.ieor.iitb.ac.in/node/2418" target="_blank">Link ↗</a></span></div></div>
+  <div class="cert-item"><div class="cert-icon">📌</div><div class="cert-text"><strong>Poster Presentation</strong><span>"Enabling Electric Cooking Ecosystem in Rural India" · Modern Energy Cooking Forum 2023 · New Delhi · Nov 3, 2023</span></div></div>
+  <div class="cert-item"><div class="cert-icon">📌</div><div class="cert-text"><strong>Poster Presentation</strong><span>"Evidence-based cooling strategies for warming world" · IITB Sustainability Conclave · VMCC, IIT Bombay · Nov 30, 2022</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🌍</div><div class="cert-text"><strong>Guinness World Record — Team Member</strong><span>"Most LED lights lit simultaneously" · IIT Bombay · 2018</span></div></div>
+  <div class="cert-item"><div class="cert-icon">🎓</div><div class="cert-text"><strong>Workshop Organizer</strong><span>"Decentralizing Solar Solutions: Attaining and Sustaining Electricity Access for All" · IIT Bombay · Dec 7–8, 2018</span></div></div>
+  <div class="cert-item"><div class="cert-icon">📋</div><div class="cert-text"><strong>Policy Design Workshop</strong><span>"An Evidence-Based Cooling Strategy for India" · EESL, New Delhi · Sep 8, 2022</span></div></div>
+  <div class="cert-item"><div class="cert-icon">📋</div><div class="cert-text"><strong>Indo-US Workshop</strong><span>"Application of Data Science in Biological Systems" · SPARC program, MHRD · Sep 8, 2021</span></div></div>
+
+  <hr class="divider">
+
+  <div class="sec-label">Skills</div>
+  <h2 class="sec">Technical Skills</h2>
+
+  <div class="skills-grid">
+    <div>
+      <div class="skills-col-head">Data Science &amp; AI</div>
+      <div class="tag-wrap">
+        <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Hugging Face</span><span class="tag">LangGraph</span><span class="tag">Azure AI</span><span class="tag">LightGBM</span><span class="tag">XGBoost</span><span class="tag">CatBoost</span><span class="tag">Scikit-learn</span><span class="tag">LLM Fine-Tuning</span><span class="tag">RAG</span><span class="tag">Deep Learning</span><span class="tag">NLP</span><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">R</span><span class="tag">MATLAB</span><span class="tag">Excel / VBA</span>
+      </div>
+    </div>
+    <div>
+      <div class="skills-col-head">Research Methods</div>
+      <div class="tag-wrap">
+        <span class="tag">Survey Design</span><span class="tag">RCT</span><span class="tag">Panel Data</span><span class="tag">Logistic Regression</span><span class="tag">Mixed Methods</span><span class="tag">REDCap</span><span class="tag">AnyLogic</span><span class="tag">K-Means</span><span class="tag">Causal Inference</span><span class="tag">Agent-Based Modeling</span><span class="tag">Programme Evaluation</span><span class="tag">Impact Assessment</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════ ACADEMIC ═══════════════════════ -->
+<section class="page" id="page-academic">
+
+  <div class="sec-label">Education</div>
+  <h2 class="sec">Academic Qualifications</h2>
+
+  <div class="edu-block">
+    <div class="edu-degree">M.Tech · Signal Processing &amp; Control</div>
+    <div class="edu-inst">Department of Electrical Engineering · National Institute of Technology, Hamirpur</div>
+    <div class="edu-meta">August 2010 – July 2012 &nbsp;|&nbsp; GPA: 6.56/10.0 &nbsp;|&nbsp; Thesis Grade: S (highest)</div>
+    <div class="edu-meta" style="margin-top:4px;">Thesis: "Hiding Image and Speech data using Repeated Unitary Similarity Transformation"</div>
+    <div class="edu-meta">Advisors: Dr. Amit Kaul &amp; Dr. Ravindra Nath Sharma</div>
+    <div class="edu-meta" style="margin-top:4px;">Key subjects: Linear Algebra · Adaptive Signal Processing · Statistical Signal Processing · Image Processing · Digital Signal Processing</div>
+    <div class="edu-meta" style="margin-top:4px;"><strong>MHRD Scholarship recipient</strong></div>
+  </div>
+
+  <div class="edu-block">
+    <div class="edu-degree">B.E. · Electronics &amp; Communication Engineering</div>
+    <div class="edu-inst">Arya College of Engineering &amp; IT · Jaipur (University of Rajasthan)</div>
+    <div class="edu-meta">August 2005 – June 2009 &nbsp;|&nbsp; Cumulative: 70.8% (Hons)</div>
+    <div class="edu-meta" style="margin-top:4px;">Final Year Project: Micro-controller based home security system</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="sec-label">Experience</div>
+  <h2 class="sec">Professional Experience</h2>
+
+  <div class="proj-card">
+    <div class="proj-title">Project Research Scientist · IIT Bombay, IEOR</div>
+    <div class="proj-meta">December 2022 – March 2026</div>
+    <p>Led ML engineering and research for large-scale energy-access programmes. Built IoT data pipelines (10M+ records), trained ensemble classifiers, designed field experiments across Bihar/UP/Jharkhand/Assam, and co-led the UKAid/MECS electric cooking programme (12,000+ households).</p>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-title">Project Research Associate · IIT Bombay, IEOR</div>
+    <div class="proj-meta">November 2017 – December 2022</div>
+    <p>Analytics owner and researcher for the SoULS programme — the world's largest community-based solar lamp initiative (6M+ lamps). Built regression and clustering models on multi-wave panel data; administered REDCap platforms for multi-state household surveys.</p>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-title">Engineering Analyst · Kamal Cogent Energy Pvt. Ltd. (EnerNOC)</div>
+    <div class="proj-meta">April 2014 – November 2016 · Jaipur</div>
+    <p>Energy-demand forecasting and quantitative analysis for US commercial, healthcare, and government clients. Tariff analysis, M&amp;V automation, peak-demand modelling and Excel/VBA tool development.</p>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-title">Assistant Professor · Global Institute of Technology, Jaipur</div>
+    <div class="proj-meta">August 2012 – March 2014</div>
+    <p>Taught Electronics &amp; Communication Engineering; developed curriculum and mentored undergraduate students.</p>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════ PROJECTS ═══════════════════════ -->
+<section class="page" id="page-projects">
+
+  <div class="sec-label">Research &amp; Applied Work</div>
+  <h2 class="sec">Projects</h2>
+
+  <h3 class="sub">Research Projects at IIT Bombay</h3>
+
+  <div class="proj-card">
+    <div class="proj-title">Enabling Electric Cooking Ecosystem for Rural India</div>
+    <div class="proj-meta">December 2022 – March 2026 · UKAid/MECS funded · with Dr. Sayli Bhide &amp; Prof. Jayendran Venkateswaran (IEOR, IITB)</div>
+    <p>Developed a sustainable supply ecosystem for electric cooking appliances in rural Bihar. Activated 10 blocks through a supply-chain facilitation model; reached 12,000+ households with 1,505 paying customers converting to electric cooking. Led field operations, IoT data collection (10M+ records), nudging experiments (n=194), and co-authored the public MECS Phase II report.</p>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-title">Sustainable Access to Reliable Energy Services: Super-Efficient Appliances &amp; Storage</div>
+    <div class="proj-meta">January 2021 – 2022 · RCT collaboration with UC Berkeley / UC Santa Barbara / EESL · with Dr. Sayli Bhide, Prof. Jayendran Venkateswaran, Prof. Ranjit Deshmukh (UC Santa Barbara), Prof. Meredith Fowlie (UC Berkeley)</div>
+    <p>Analysed RCT data on super-efficient appliances and Li-ion battery storage for low-income rural households. Findings: 70–80% reduction in household energy use and up to 80% reduction in electricity bills. Results fed into national subsidy policy recommendations.</p>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-title">Sustained Use of LPG and Solar Induction Cookstoves for Cleaner Cooking in Rural India</div>
+    <div class="proj-meta">January 2021 – · with Dr. Sayli Bhide, Prof. Jayendran Venkateswaran (IEOR, IITB), Prof. Praveen Kumar (Boston College)</div>
+    <p>Studying social, economic, technological, and behavioural factors that drive or hinder the sustained adoption of LPG and solar induction cookstoves over traditional biomass. Multi-round data collection across UP, Bihar, and Assam.</p>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-title">SoULS — Solar Urja through Localization for Sustainability</div>
+    <div class="proj-meta">November 2017 – 2022 · with Dr. Rohit Sharma (VIT Bhopal), Dr. Sayli Bhide, Prof. Jayendran Venkateswaran &amp; Prof. Chetan Singh Solanki (IEOR, IITB)</div>
+    <p>Analytics owner for the world's largest community-based solar lamp programme (6M+ lamps across multiple Indian states). Built 4-wave panel data models on 1,159 households (WTP, women's empowerment, education outcomes), applied clustering and regression, and administered REDCap-based multi-state surveys.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h3 class="sub">Industry Projects</h3>
+
+  <div class="proj-card">
+    <div class="proj-title">Energy Analytics &amp; Demand Forecasting</div>
+    <div class="proj-meta">April 2014 – November 2016 · Kamal Cogent Energy Pvt. Ltd. (EnerNOC, Boston)</div>
+    <p>Statistical forecasting and quantitative analysis for US commercial, healthcare, and government clients. Built automated M&amp;V, peak-demand, weather-normalised, and time-of-day analysis tools in Excel/VBA. Tariff and rate-schedule analysis for deregulated utility clients.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h3 class="sub">Self Projects (Kaggle)</h3>
+
+  <div class="proj-card">
+    <div class="proj-title">RSNA 2023 — Abdominal Trauma Detection</div>
+    <div class="proj-meta">Deep Learning · CT Scan Classification</div>
+    <p>Developed a CNN-based model for detection of abdominal injuries in CT scans using transfer learning (ResNet50). Applied image segmentation and multi-label classification techniques.</p>
+    <a class="pub-link" href="https://www.kaggle.com/c/rsna-2023-abdominal-trauma-detection" target="_blank">Kaggle competition ↗</a>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-title">SIIM-ISIC Melanoma Classification</div>
+    <div class="proj-meta">Deep Learning · Skin Lesion Imaging</div>
+    <p>Binary classification of malignant melanoma from dermoscopic images using ResNet50 transfer learning with augmentation and pseudo-labelling.</p>
+    <a class="pub-link" href="https://www.kaggle.com/c/siim-isic-melanoma-classification" target="_blank">Kaggle competition ↗</a>
+  </div>
+
+  <hr class="divider">
+
+  <h3 class="sub">Academic Projects</h3>
+
+  <div class="proj-card">
+    <div class="proj-title">M.Tech Thesis — Image &amp; Speech Data Hiding</div>
+    <div class="proj-meta">NIT Hamirpur · 2010–2012 · Thesis Grade: S (highest)</div>
+    <p>Designed a steganography method using Repeated Unitary Similarity Transformation for hiding image and speech data. Implemented in MATLAB. Published at BEATs 2012, NIT Hamirpur.</p>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════ HOBBIES ═══════════════════════ -->
+<section class="page" id="page-hobbies">
+
+  <div class="sec-label">Beyond Research</div>
+  <h2 class="sec">Hobbies &amp; Interests</h2>
+
+  <div class="highlight-card">
+    <div class="highlight-card-title">📖 Reading</div>
+    <p>Non-fiction books on development economics, energy policy, technology adoption, and AI ethics. Particular interest in field experiments and behavioural insights in low-income contexts.</p>
+  </div>
+  <div class="highlight-card">
+    <div class="highlight-card-title">🖥️ Competitive ML / Kaggle</div>
+    <p>Participating in Kaggle competitions as a way to stay current with state-of-the-art ML techniques and practise on real datasets — particularly medical imaging and NLP tasks.</p>
+  </div>
+  <div class="highlight-card">
+    <div class="highlight-card-title">🌱 Sustainable Technology</div>
+    <p>Following advances in clean energy, eCooking, and off-grid solar — both as professional interest and personal commitment to sustainable living.</p>
+  </div>
+  <div class="highlight-card">
+    <div class="highlight-card-title">🏔️ Travel &amp; Fieldwork</div>
+    <p>Extensive travel across rural Bihar, Jharkhand, Assam, and Uttar Pradesh for field research — an interest in understanding livelihood realities firsthand that extends beyond professional obligation.</p>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+<section class="page" id="page-contact">
+
+  <div class="sec-label">Get in Touch</div>
+  <h2 class="sec">Contact Details</h2>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:24px;">
+    <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:2px;">Deepak Choudhary</div>
+    <div style="font-size:13px;color:var(--accent);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:16px;">Data Scientist &amp; Policy Researcher · IIT Bombay</div>
+
+    <div class="contact-row">
+      <div class="contact-label">Office</div>
+      <div class="contact-val">Room 012 (Project Workspace A), Ground Floor<br>Dept. of Industrial Engineering &amp; Operations Research<br>IIT Bombay, Powai, Mumbai 400076</div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-label">Tel</div>
+      <div class="contact-val">+91 22 2576 4385 &nbsp;|&nbsp; +91 97367 89321</div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-label">Email (Personal)</div>
+      <div class="contact-val">erdeepak.aryan@gmail.com</div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-label">Email (IITB)</div>
+      <div class="contact-val">dcnith@iitb.ac.in</div>
+    </div>
+  </div>
+
+  <h3 class="sub">Online Profiles</h3>
+  <div class="social-row" style="flex-direction:column;gap:10px;">
+    <div class="contact-row"><div class="contact-label">LinkedIn</div><div class="contact-val"><a class="pub-link" href="https://www.linkedin.com/in/deepak-choudhary-33455417/" target="_blank">linkedin.com/in/deepak-choudhary-33455417 ↗</a></div></div>
+    <div class="contact-row"><div class="contact-label">Google Scholar</div><div class="contact-val"><a class="pub-link" href="https://scholar.google.co.in/citations?user=ZzQA3dgAAAAJ&hl=en" target="_blank">scholar.google.co.in ↗</a></div></div>
+    <div class="contact-row"><div class="contact-label">ResearchGate</div><div class="contact-val"><a class="pub-link" href="https://www.researchgate.net/profile/Deepak_Choudhary14" target="_blank">researchgate.net/profile/Deepak_Choudhary14 ↗</a></div></div>
+    <div class="contact-row"><div class="contact-label">GitHub</div><div class="contact-val"><a class="pub-link" href="https://github.com/dcnith" target="_blank">github.com/dcnith ↗</a></div></div>
+    <div class="contact-row"><div class="contact-label">Kaggle</div><div class="contact-val"><a class="pub-link" href="https://www.kaggle.com/deepakchoudhary" target="_blank">kaggle.com/deepakchoudhary ↗</a></div></div>
+    <div class="contact-row"><div class="contact-label">ORCID</div><div class="contact-val"><a class="pub-link" href="https://orcid.org/0000-0001-6848-6850" target="_blank">0000-0001-6848-6850 ↗</a></div></div>
+  </div>
+
+</section>
+
+<script>
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
